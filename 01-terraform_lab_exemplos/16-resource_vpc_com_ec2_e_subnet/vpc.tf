@@ -2,7 +2,7 @@ resource "aws_vpc" "my_vpc" {
   cidr_block = "172.16.0.0/16"
 
   tags = {
-    Name = "tf-lab-danilo-vpc"
+    Name = "dufloth-tf-lab-danilo-vpc"
   }
 }
 
@@ -12,7 +12,7 @@ resource "aws_subnet" "my_subnet" {
   availability_zone = "us-east-1a"
 
   tags = {
-    Name = "tf-lab-danilo-subnet"
+    Name = "dufloth-tf-lab-danilo-subnet"
   }
 }
 
@@ -22,7 +22,7 @@ resource "aws_subnet" "my_subnet_b" {
   availability_zone = "us-east-1b"
 
   tags = {
-    Name = "tf-lab-danilo-subnet_b"
+    Name = "dufoth-tf-lab-danilo-subnet_b"
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_subnet" "my_subnet_c" {
   availability_zone = "us-east-1c"
 
   tags = {
-    Name = "tf-lab-danilo-subnet_c"
+    Name = "dufloth-tf-lab-danilo-subnet_c"
   }
 }
 
@@ -43,7 +43,7 @@ resource "aws_network_interface" "my_subnet" {
   # security_groups = ["${aws_security_group.allow_ssh1.id}"]
 
   tags = {
-    Name = "primary_network_interface my_subnet"
+    Name = "dufloth-primary_network_interface my_subnet"
   }
 }
 
@@ -54,6 +54,6 @@ resource "aws_network_interface" "my_subnet_b" {
   # security_groups = ["${aws_security_group.allow_ssh1.id}"]
 
   tags = {
-    Name = "primary_network_interface my_subnet_b"
+    Name = "dufloth-primary_network_interface my_subnet_b"
   }
 }
