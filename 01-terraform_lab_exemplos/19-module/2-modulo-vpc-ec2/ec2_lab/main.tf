@@ -15,7 +15,7 @@ resource "aws_instance" "web" {
 
 
   tags = {
-    Name = "Maquina para testar VPC do terraform - ${var.config[count.index].Nome}"
+    Name = "Dufloth-Maquina para testar VPC do terraform - ${var.config[count.index].Nome}"
   }
   root_block_device {
     encrypted = true
