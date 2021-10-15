@@ -77,6 +77,14 @@
       register: ps
     - debug:
         msg: " '{{ ps.stdout_lines }}' "
+        
+    - name: "Trocando pasta do render do apache para o wordpress"
+      copy:
+        src: "apache/000-default.conf"
+        dest: "/etc/apache2/sites-available/000-default.conf"
+      become: yes
+      notify:
+        - "restart apache"    
 
 
           #    - shell: ls -la /var/www
