@@ -15,7 +15,7 @@
       service:
           name: nginx
           state: started
-
+      become: yes
 
     - name: "Fazendo downlaod do template"
       get_url:
