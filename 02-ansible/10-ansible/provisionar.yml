@@ -22,9 +22,9 @@
         url: "https://github.com/startbootstrap/startbootstrap-sb-admin-2/archive/gh-pages.zip"
         dest: "/tmp/gh-pages.zip"
 
-    - name: "Fazendo descompactação dos template"
-      unarchive:
-        src: "/tmp/gh-pages.zip"
-        dest: "/var/www"
-        remote_src: yes
-      become: yes
+    #- name: "Fazendo descompactação dos template"
+    #  unarchive:
+    #    src: "/tmp/gh-pages.zip"
+    #    dest: "/var/www"
+    #    remote_src: yes
+    #  become: yes
