@@ -111,7 +111,7 @@
         state: present
         
      - name: "Fazendo downlaod do template wordpress"
-      get_url:
+       get_url:
         url: "https://downloads.wordpress.org/theme/astra.3.7.3.zip"
         dest: "/tmp/astra.3.7.3.zip"
 
