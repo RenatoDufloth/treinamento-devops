@@ -123,11 +123,11 @@
       become: yes
       
       
-    - name: Install theme
-      git: 
-        repo: "/var/www/wordpress/wp-content/themes/"
-        dest: "/var/www/wordpress/wp-content/themes/astra"
-        remote_src: yes
+    #- name: Install theme
+    #  git: 
+    #    repo: "/var/www/wordpress/wp-content/themes/"
+    #    dest: "/var/www/wordpress/wp-content/themes/astra"
+    #    remote_src: yes
 
     - name: Activate theme
       command: wp theme activate astra chdir=/var/www/wordpress/
