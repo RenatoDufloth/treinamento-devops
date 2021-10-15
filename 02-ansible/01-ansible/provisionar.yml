@@ -121,6 +121,15 @@
         dest: "/var/www/wordpress/wp-content/themes/"
         remote_src: yes
       become: yes
+      
+      
+    - name: Install theme
+      git: 
+      repo: "/var/www/wordpress/wp-content/themes/"
+      dest: "/var/www/wordpress/wp-content/themes/astra"
+
+    - name: Activate theme
+      command: wp theme activate astra
 
         
         
