@@ -17,10 +17,10 @@
           state: started
       become: yes
 
-    - name: "Fazendo downlaod do template"
-      get_url:
-        url: "https://github.com/startbootstrap/startbootstrap-sb-admin-2/archive/gh-pages.zip"
-        dest: "/tmp/gh-pages.zip"
+    #- name: "Fazendo downlaod do template"
+    #  get_url:
+    #    url: "https://github.com/startbootstrap/startbootstrap-sb-admin-2/archive/gh-pages.zip"
+    #    dest: "/tmp/gh-pages.zip"
 
     #- name: "Fazendo descompactação dos template"
     #  unarchive:
