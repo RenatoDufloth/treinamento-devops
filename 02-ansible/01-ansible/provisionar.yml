@@ -118,8 +118,7 @@
     - name: "Fazendo descompactação dos arquivos do template WP"
       unarchive:
         src: "/tmp/astra.3.7.3.zip"
-        #dest: "/var/www/wordpress/wp-content/themes/"
-        dest: "/var/www/html"
+        dest: "/var/www/wordpress/wp-content/themes/"
         remote_src: yes
       become: yes
       
