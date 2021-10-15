@@ -7,11 +7,24 @@ resource "aws_security_group" "allow_ssh" {
   vpc_id      = "vpc-0404e2502328d5e45"
 
 
-  ingress = [
+ ingress = [
     {
-      description      = "ssh from VPC"
+      description      = "80 from VPC"
       from_port        = 80
       to_port          = 80
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids  = null
+      security_groups : null
+      self : null
+    }
+   
+   ingress = [
+    {
+      description      = "ssh from VPC"
+      from_port        = 22
+      to_port          = 22
       protocol         = "tcp"
       cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
