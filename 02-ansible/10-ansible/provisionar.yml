@@ -8,3 +8,10 @@
         upgrade: yes
         update_cache: yes
         cache_valid_time: 86400 #Um dia
+        
+    - name: install ngnix
+      apt: name=nginx state=latest
+    - name: start nginx
+      service:
+          name: nginx
+          state: started
