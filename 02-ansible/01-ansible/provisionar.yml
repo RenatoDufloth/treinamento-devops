@@ -79,10 +79,11 @@
         - { regex: 'senha_aqui', value: 'root' } 
 
 
-        
+     
     - name: "Trocando pasta do render do apache para o wordpress"
       copy:
-        src: "apache/000-default.conf"
+        #src: "apache/000-default.conf"
+        src:  "~/projetos/terraform_exec/treinamento-devops/02-ansible/05-wordpress/apache/000-default.conf"
         dest: "/etc/apache2/sites-available/000-default.conf"
       become: yes
       notify:
