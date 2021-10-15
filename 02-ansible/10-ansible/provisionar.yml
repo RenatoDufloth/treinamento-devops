@@ -16,6 +16,23 @@
           name: nginx
           state: started
       become: yes
+      
+    - name: "Instala pacotes em lote"
+      apt:
+        name: "{{ item }}"
+        state: latest
+      become: yes # roda com sudo
+      with_items:
+        - php7.4
+        - apache2
+        - libapache2-mod-php7.4
+        - php-mysql
+        - php-curl
+        - mysql-server
+        - python3-pycurl
+        - python3-mysqldb
+        - unzip
+
 
     - name: "Fazendo downlaod do template"
       get_url:
