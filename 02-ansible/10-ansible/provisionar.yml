@@ -1,7 +1,8 @@
 - hosts: all
   become: yes
   tasks:
-      - name: "Atualizando pacotes"
+          
+    - name: "Atualizando pacotes"
       become: yes
       apt:
         upgrade: yes
