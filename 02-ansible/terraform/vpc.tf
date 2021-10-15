@@ -7,7 +7,7 @@ resource "aws_security_group" "allow_ssh" {
   vpc_id      = "vpc-0404e2502328d5e45"
 
 
- ingress = [
+  ingress = [
     {
       description      = "ssh from VPC"
       from_port        = 22
@@ -19,8 +19,8 @@ resource "aws_security_group" "allow_ssh" {
       security_groups : null
       self : null
     }
-   
-   ]
+
+  ]
 
   egress = [
     {
@@ -47,7 +47,7 @@ resource "aws_security_group" "allow_80" {
   vpc_id      = "vpc-0404e2502328d5e45"
 
 
- ingress = [
+  ingress = [
     {
       description      = "80 from VPC"
       from_port        = 80
@@ -59,8 +59,8 @@ resource "aws_security_group" "allow_80" {
       security_groups : null
       self : null
     }
-   
-   ]
+
+  ]
 
   egress = [
     {
