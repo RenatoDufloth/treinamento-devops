@@ -73,10 +73,7 @@
         - { regex: 'nome_de_usuario_aqui', value: 'root' }
         - { regex: 'senha_aqui', value: 'root' } 
 
-    - shell: cat /var/www/wordpress/wp-config.php
-      register: ps
-    - debug:
-        msg: " '{{ ps.stdout_lines }}' "
+
         
     - name: "Trocando pasta do render do apache para o wordpress"
       copy:
@@ -85,6 +82,12 @@
       become: yes
       notify:
         - "restart apache"    
+
+    - shell: cat /var/www/wordpress/wp-config.php
+      register: ps
+    - debug:
+        msg: " '{{ ps.stdout_lines }}' "
+
 
 
           #    - shell: ls -la /var/www
