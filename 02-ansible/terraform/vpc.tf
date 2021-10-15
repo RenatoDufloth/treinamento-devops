@@ -20,7 +20,7 @@ resource "aws_security_group" "allow_ssh" {
       self : null
     }
    
-
+   ]
 
   egress = [
     {
@@ -60,7 +60,7 @@ resource "aws_security_group" "allow_80" {
       self : null
     }
    
-
+   ]
 
   egress = [
     {
