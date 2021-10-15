@@ -130,7 +130,7 @@
     #    remote_src: yes
 
     - name: Activate theme
-      command: wp theme activate astra chdir=/var/www/wordpress/
+      command: wp theme activate astra
      
 
         
