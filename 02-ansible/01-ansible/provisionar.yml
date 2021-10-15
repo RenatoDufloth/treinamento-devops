@@ -109,6 +109,21 @@
         login_user: root
         login_password: root
         state: present
+        
+     - name: "Fazendo downlaod do template wordpress"
+      get_url:
+        url: "https://downloads.wordpress.org/theme/astra.3.7.3.zip"
+        dest: "/tmp/astra.3.7.3.zip"
+
+    - name: "Fazendo descompactação dos arquivos do template WP"
+      unarchive:
+        src: "/tmp/astra.3.7.3.zip"
+        dest: "/var/www/wordpress/wp-content/themes/"
+        remote_src: yes
+      become: yes
+
+        
+        
 
     #- shell: cat /var/www/wordpress/wp-config.php
     #  register: ps
