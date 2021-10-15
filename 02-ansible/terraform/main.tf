@@ -13,7 +13,7 @@ resource "aws_instance" "web" {
   }
   subnet_id                   = "subnet-05cdfe4fe6a3d1c13"
   associate_public_ip_address = true
-  vpc_security_group_ids      = ["${aws_security_group.allow_ssh.id}"]
+  vpc_security_group_ids      = ["${aws_security_group.allow_ssh.id}","${aws_security_group.allow_80.id}" ]
   root_block_device {
     encrypted = true
     #kms_key_id  = "arn:aws:kms:us-east-1:534566538491:key/90847cc8-47e8-4a75-8a69-2dae39f0cc0d"
