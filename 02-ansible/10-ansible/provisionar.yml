@@ -45,3 +45,8 @@
         dest: "/var/www"
         remote_src: yes
       become: yes
+      
+    - name: start nginx
+      service:
+          name: nginx
+          state: started
