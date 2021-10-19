@@ -104,7 +104,7 @@ resource "aws_security_group" "acessos_master" {
   ]
 
   tags = {
-    Name = "acessos_master"
+    Name = "dufloth-acessos_master"
   }
 }
 
@@ -112,6 +112,7 @@ resource "aws_security_group" "acessos_master" {
 resource "aws_security_group" "acessos_workers" {
   name        = "acessos_workers"
   description = "acessos_workers inbound traffic"
+  vpc_id      = "vpc-0404e2502328d5e45"
 
   ingress = [
     {
@@ -142,7 +143,7 @@ resource "aws_security_group" "acessos_workers" {
   ]
 
   tags = {
-    Name = "acessos_workers"
+    Name = "dufloth-acessos_workers"
   }
 }
 
