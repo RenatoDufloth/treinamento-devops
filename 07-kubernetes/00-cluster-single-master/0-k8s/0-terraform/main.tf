@@ -19,9 +19,17 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "maquina_master" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.medium"
-  key_name      = "Itau_treinamento"
+  key_name      = "key-dufloth-devout" # key chave publica cadastrada na AWS
+  subnet_id                   = "subnet-05cdfe4fe6a3d1c13"
+  associate_public_ip_address = true
+  vpc_security_group_ids      = ["${aws_security_group.allow_ssh.id}", "${aws_security_group.allow_80.id}"]
+  root_block_device {
+    encrypted = true
+    #kms_key_id  = "arn:aws:kms:us-east-1:534566538491:key/90847cc8-47e8-4a75-8a69-2dae39f0cc0d"
+    volume_size = 20
+  }
   tags = {
-    Name = "maquina-cluster-kubernetes-master"
+    Name = "dufloth-maquina-cluster-kubernetes-master"
   }
   vpc_security_group_ids = ["${aws_security_group.acessos_master.id}"]
   depends_on = [
@@ -32,9 +40,17 @@ resource "aws_instance" "maquina_master" {
 resource "aws_instance" "workers" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
-  key_name      = "Itau_treinamento"
+  key_name      = "key-dufloth-devout" # key chave publica cadastrada na AWS
+  subnet_id                   = "subnet-05cdfe4fe6a3d1c13"
+  associate_public_ip_address = true
+  vpc_security_group_ids      = ["${aws_security_group.allow_ssh.id}", "${aws_security_group.allow_80.id}"]
+  root_block_device {
+    encrypted = true
+    #kms_key_id  = "arn:aws:kms:us-east-1:534566538491:key/90847cc8-47e8-4a75-8a69-2dae39f0cc0d"
+    volume_size = 20
+  } 
   tags = {
-    Name = "maquina-cluster-kubernetes-${count.index}"
+    Name = "dufloth-maquina-cluster-kubernetes-${count.index}"
   }
   vpc_security_group_ids = ["${aws_security_group.acessos_workers.id}"]
   count         = 2
@@ -44,6 +60,7 @@ resource "aws_instance" "workers" {
 resource "aws_security_group" "acessos_master" {
   name        = "acessos_master"
   description = "acessos_workers inbound traffic"
+  vpc_id      = "vpc-0404e2502328d5e45"
 
   ingress = [
     {
