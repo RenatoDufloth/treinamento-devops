@@ -82,10 +82,9 @@ resource "aws_instance" "k8s_workers" {
 }
 
 
-resource "aws_security_group" "acessos_master" {
-  name        = "acessos_master"
+esource "aws_security_group" "acessos_master" {
+  name        = "k8s-acessos_master"
   description = "acessos inbound traffic"
-  vpc_id      = "vpc-0404e2502328d5e45"
 
   ingress = [
     {
@@ -161,7 +160,6 @@ resource "aws_security_group" "acessos_master" {
 resource "aws_security_group" "acessos" {
   name        = "k8s-acessos"
   description = "acessos inbound traffic"
-  vpc_id      = "vpc-0404e2502328d5e45"
 
   ingress = [
     {
@@ -226,7 +224,7 @@ resource "aws_security_group" "acessos" {
 output "k8s-masters" {
   value = [
     for key, item in aws_instance.k8s_masters :
-      "k8s-master ${key+1} - ${item.private_ip} - ssh -i ~/projetos/devops/id_rsa_itau_treinamento ubuntu@${item.public_dns}"
+      "k8s-master ${key+1} - ${item.private_ip} - ssh -i ~/Desktop/devops/treinamentoItau ubuntu@${item.public_dns}"
   ]
 }
 
@@ -234,14 +232,14 @@ output "k8s-masters" {
 output "output-k8s_workers" {
   value = [
     for key, item in aws_instance.k8s_workers :
-      "k8s-workers ${key+1} - ${item.private_ip} - ssh -i ~/projetos/devops/id_rsa_itau_treinamento ubuntu@${item.public_dns}"
+      "k8s-workers ${key+1} - ${item.private_ip} - ssh -i ~/Desktop/devops/treinamentoItau ubuntu@${item.public_dns}"
   ]
 }
 
 output "output-k8s_proxy" {
   value = [
-    "k8s_proxy - ${aws_instance.k8s_proxy.private_ip} - ssh -i ~/projetos/devops/id_rsa_itau_treinamento ubuntu@${aws_instance.k8s_proxy.public_dns}"
+    "k8s_proxy - ${aws_instance.k8s_proxy.private_ip} - ssh -i ~/Desktop/devops/treinamentoItau ubuntu@${aws_instance.k8s_proxy.public_dns}"
   ]
 }
-
+  
 # terraform refresh para mostrar o ssh
