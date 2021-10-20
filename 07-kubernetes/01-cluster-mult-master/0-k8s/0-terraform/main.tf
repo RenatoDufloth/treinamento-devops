@@ -83,7 +83,7 @@ resource "aws_instance" "k8s_workers" {
 
 
 resource "aws_security_group" "acessos_master" {
-  name        = "dufloth-k8s-acessos_master"
+  name        = "acessos_master"
   description = "acessos inbound traffic"
   vpc_id      = "vpc-0404e2502328d5e45"
 
