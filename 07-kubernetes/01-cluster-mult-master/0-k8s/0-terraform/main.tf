@@ -82,7 +82,7 @@ resource "aws_instance" "k8s_workers" {
 }
 
 
-esource "aws_security_group" "acessos_master" {
+resource "aws_security_group" "acessos_master" {
   name        = "k8s-acessos_master"
   description = "acessos inbound traffic"
 
