@@ -27,7 +27,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "k8s_proxy" {
   ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
   key_name      = "key-dufloth-devout"
   subnet_id                   = "subnet-05cdfe4fe6a3d1c13"
   associate_public_ip_address = true
@@ -44,8 +44,8 @@ resource "aws_instance" "k8s_proxy" {
 
 resource "aws_instance" "k8s_masters" {
   ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "t2.medium"
-  key_name      = "Itau_treinamento"
+  instance_type = "t2.large"
+  key_name      = "key-dufloth-devout"
   count         = 3
   subnet_id                   = "subnet-05cdfe4fe6a3d1c13"
   associate_public_ip_address = true
@@ -65,8 +65,8 @@ resource "aws_instance" "k8s_masters" {
 
 resource "aws_instance" "k8s_workers" {
   ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "t2.micro"
-  key_name      = "Itau_treinamento"
+  instance_type = "t2.medium"
+  key_name      = "key-dufloth-devout"
   count         = 3
   subnet_id                   = "subnet-05cdfe4fe6a3d1c13"
   associate_public_ip_address = true
