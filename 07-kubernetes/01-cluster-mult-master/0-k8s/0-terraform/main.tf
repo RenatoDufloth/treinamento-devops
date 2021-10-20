@@ -6,23 +6,56 @@ data "http" "myip" {
   url = "http://ipv4.icanhazip.com" # outra opção "https://ifconfig.me"
 }
 
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+
+  owners = ["099720109477"] # Canonical
+}
+
 resource "aws_instance" "k8s_proxy" {
-  ami           = "ami-09e67e426f25ce0d7"
+  ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
-  key_name      = "Itau_treinamento"
+  key_name      = "key-dufloth-devout"
+  subnet_id                   = "subnet-05cdfe4fe6a3d1c13"
+  associate_public_ip_address = true
+  root_block_device {
+    encrypted = true
+    #kms_key_id  = "arn:aws:kms:us-east-1:534566538491:key/90847cc8-47e8-4a75-8a69-2dae39f0cc0d"
+    volume_size = 20
+  }
   tags = {
-    Name = "k8s-haproxy"
+    Name = "dufloth-k8s-haproxy"
   }
   vpc_security_group_ids = ["${aws_security_group.acessos.id}"]
 }
 
 resource "aws_instance" "k8s_masters" {
-  ami           = "ami-09e67e426f25ce0d7"
+  ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.medium"
   key_name      = "Itau_treinamento"
   count         = 3
+  subnet_id                   = "subnet-05cdfe4fe6a3d1c13"
+  associate_public_ip_address = true
+  root_block_device {
+    encrypted = true
+    #kms_key_id  = "arn:aws:kms:us-east-1:534566538491:key/90847cc8-47e8-4a75-8a69-2dae39f0cc0d"
+    volume_size = 20
+  }
   tags = {
-    Name = "k8s-master-${count.index}"
+    Name = "dufloth-k8s-master-${count.index}"
   }
   vpc_security_group_ids = ["${aws_security_group.acessos_master.id}"]
   depends_on = [
@@ -31,20 +64,28 @@ resource "aws_instance" "k8s_masters" {
 }
 
 resource "aws_instance" "k8s_workers" {
-  ami           = "ami-09e67e426f25ce0d7"
+  ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
   key_name      = "Itau_treinamento"
   count         = 3
+  subnet_id                   = "subnet-05cdfe4fe6a3d1c13"
+  associate_public_ip_address = true
+  root_block_device {
+    encrypted = true
+    #kms_key_id  = "arn:aws:kms:us-east-1:534566538491:key/90847cc8-47e8-4a75-8a69-2dae39f0cc0d"
+    volume_size = 20
+  }
   tags = {
-    Name = "k8s_workers-${count.index}"
+    Name = "dufloth-k8s_workers-${count.index}"
   }
   vpc_security_group_ids = ["${aws_security_group.acessos.id}"]
 }
 
 
 resource "aws_security_group" "acessos_master" {
-  name        = "k8s-acessos_master"
+  name        = "dufloth-k8s-acessos_master"
   description = "acessos inbound traffic"
+  vpc_id      = "vpc-0404e2502328d5e45"
 
   ingress = [
     {
@@ -112,7 +153,7 @@ resource "aws_security_group" "acessos_master" {
   ]
 
   tags = {
-    Name = "allow_ssh"
+    Name = "dufloth-k8s-allow_ssh"
   }
 }
 
@@ -120,6 +161,7 @@ resource "aws_security_group" "acessos_master" {
 resource "aws_security_group" "acessos" {
   name        = "k8s-acessos"
   description = "acessos inbound traffic"
+  vpc_id      = "vpc-0404e2502328d5e45"
 
   ingress = [
     {
@@ -176,7 +218,7 @@ resource "aws_security_group" "acessos" {
   ]
 
   tags = {
-    Name = "allow_ssh"
+    Name = "dufloth-k8s-allow_ssh"
   }
 }
 
