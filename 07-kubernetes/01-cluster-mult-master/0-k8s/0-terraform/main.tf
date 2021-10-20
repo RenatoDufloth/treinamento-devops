@@ -45,6 +45,7 @@ resource "aws_instance" "k8s_workers" {
 resource "aws_security_group" "acessos_master" {
   name        = "k8s-acessos_master"
   description = "acessos inbound traffic"
+  vpc_id      = "vpc-0404e2502328d5e45"
 
   ingress = [
     {
@@ -120,6 +121,7 @@ resource "aws_security_group" "acessos_master" {
 resource "aws_security_group" "acessos" {
   name        = "k8s-acessos"
   description = "acessos inbound traffic"
+  vpc_id      = "vpc-0404e2502328d5e45"
 
   ingress = [
     {
@@ -176,7 +178,7 @@ resource "aws_security_group" "acessos" {
   ]
 
   tags = {
-    Name = "allow_ssh"
+    Name = "dufloth-k8s-allow_ssh"
   }
 }
 
