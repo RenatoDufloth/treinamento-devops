@@ -129,9 +129,10 @@ resource "aws_security_group" "acessos_master" {
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
       protocol         = "-1"
-      security_groups  = [
-        "sg-056665ffa54f46217",
-      ]
+      #security_groups  = [
+      #  "sg-056665ffa54f46217",
+      #]
+      security_groups: null,
       self             = false
       to_port          = 0
     },
@@ -193,9 +194,10 @@ resource "aws_security_group" "acessos" {
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
       protocol         = "-1"
-      security_groups  = [
-        "sg-05152ffdef1105622", # acesso para o proprio grupo pois os workers precisam acessar o haproxy
-      ]
+      #security_groups  = [
+      #  "sg-05152ffdef1105622", # acesso para o proprio grupo pois os workers precisam acessar o haproxy
+     # ]
+      security_groups: null,
       self             = true
       to_port          = 0
     },
