@@ -31,13 +31,13 @@ data "aws_ami" "ubuntu" {
 
 
 resource "aws_instance" "jenkins" {
-  ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "t2.large"
-  key_name      = "key-dufloth-devout"
+  ami                         = data.aws_ami.ubuntu.id
+  instance_type               = "t2.large"
+  key_name                    = "key-dufloth-devout"
   subnet_id                   = "subnet-05cdfe4fe6a3d1c13"
   associate_public_ip_address = true
   root_block_device {
-    encrypted = true
+    encrypted   = true
     volume_size = 20
   }
   tags = {
