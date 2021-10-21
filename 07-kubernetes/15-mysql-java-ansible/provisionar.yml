@@ -2,11 +2,13 @@
   become: yes
   tasks:
     - name: "Upload k8s-deploy"
+      become: yes
       copy:
         src: "k8s-deploy"
         dest: "/root/"
     
     - name: "Aplicar configmap"
+      become: yes
       shell: kubectl apply -f /root/k8s-deploy/7-mysql-configmap.yml
 
     - name: "Aplicar secret"
