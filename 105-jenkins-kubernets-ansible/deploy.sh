@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 cd 0-terraform
 ~/projetos/terraform_exec/treinamento-devops/105-jenkins-kubernets-ansible/0-terraform/terraform init
