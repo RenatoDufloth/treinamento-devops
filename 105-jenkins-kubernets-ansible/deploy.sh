@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cd 0-terraform
-~/terraform/terraform init
-~/terraform/terraform fmt
-~/terraform/terraform apply -auto-approve
+#cd 0-terraform
+~/projetos/terraform_exec/treinamento-devops/105-jenkins-kubernets-ansible/0-terraform/terraform init
+~/projetos/terraform_exec/treinamento-devops/105-jenkins-kubernets-ansible/0-terraform/terraform/terraform fmt
+~/projetos/terraform_exec/treinamento-devops/105-jenkins-kubernets-ansible/0-terraform/terraform/terraform apply -auto-approve
 
 echo $"[ec2-jenkins]" > ../1-ansible/hosts # cria arquivo
 echo "$(~/terraform/terraform output | grep public_dns | awk '{print $2;exit}')" | sed -e "s/\",//g" >> ../1-ansible/hosts # captura output faz split de espaco e replace de ",
