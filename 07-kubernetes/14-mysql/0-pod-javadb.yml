@@ -7,7 +7,8 @@ metadata:
 spec:
   containers:
     - name: container-pod-javadb
-      image: didox/crud-java-login:v0.0.1
+      #image: didox/crud-java-login:v0.0.1
+      image: renatodufloth/crud-java-login:v0.1.2
       # env:
       #   - name: USER
       #     value: root
