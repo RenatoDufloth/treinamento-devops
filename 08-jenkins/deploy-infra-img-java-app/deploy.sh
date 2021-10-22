@@ -15,5 +15,5 @@ echo "Aguardando criação de maquinas ..."
 
 cd /var/lib/jenkins/workspace/InfraPipeline/08-jenkins/deploy-infra-img-java-app/ansible
 
-echo "Executando ansible ::::: [ ansible-playbook -i hosts provisionar.yml -u jenkins --private-key ssh -i /var/lib/jenkins/.ssh/id_rsa ]" 
-ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts provisionar.yml -u jenkins --private-key ssh -i /var/lib/jenkins/.ssh/id_rsa 
+echo "Executando ansible ::::: [ ansible-playbook -i hosts provisionar.yml -u jenkins --private-key ssh -i ~/var/lib/jenkins/.ssh/id_rsa ]" 
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts provisionar.yml -u jenkins --private-key ssh -i ~/var/lib/jenkins/.ssh/id_rsa 
