@@ -45,7 +45,7 @@ resource "aws_instance" "jenkins-lab" {
 
 
 resource "aws_security_group" "acessos" {
-  name        = "jenkins-acessos"
+  name        = "dufloth-jenkins-acessos"
   description = "acessos inbound traffic"
   vpc_id      = "vpc-0404e2502328d5e45"
 
