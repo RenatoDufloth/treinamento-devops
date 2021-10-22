@@ -4,10 +4,11 @@ cd /var/lib/jenkins/workspace/InfraPipeline/08-jenkins/deploy-infra-img-java-app
 uri=$(/usr/local/bin/terraform output | grep public_dns | awk '{print $2;exit}' | sed -e "s/\",//g")
 
 
-
+cat uri
+cat $(/usr/local/bin/terraform output | grep public_dns | awk '{print $2;exit}' | sed -e "s/\",//g")
 echo $uri
 
-cat uri
+
 
 body=$(curl "http://$uri")
 
