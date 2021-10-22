@@ -1,8 +1,8 @@
 #!/bin/bash
 
 cd 0-terraform
-/home/ubuntu/terraform init
-/home/ubuntu/terraform apply -auto-approve
+/usr/local/bin/terraform init
+/usr/local/bin/terraform apply -auto-approve
 
 echo "Aguardando criação de maquinas ..."
 sleep 10 # 10 segundos
@@ -14,4 +14,4 @@ echo "Aguardando criação de maquinas ..."
 sleep 10 # 10 segundos
 
 cd ../ansible
-ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /home/ubuntu/treinamentoItau
+ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key ssh -i ~/.ssh/id_rsa
