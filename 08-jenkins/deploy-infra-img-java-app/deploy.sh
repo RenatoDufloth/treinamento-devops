@@ -1,5 +1,3 @@
-#!/bin/bash
-
 cd 0-terraform
 /usr/local/bin/terraform init
 /usr/local/bin/terraform apply -auto-approve
