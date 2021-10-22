@@ -6,9 +6,9 @@ uri=$(/usr/local/bin/terraform output | grep public_dns | awk '{print $2;exit}' 
 echo $uri
 curl "http://$uri"
 body=$(curl "http://$uri")
-
+echo $body
 regex='Welcome to nginx!'
-
+echo $regex
 if [[ $body =~ $regex ]]
 then 
     echo "::::: nginx está no ar :::::"
