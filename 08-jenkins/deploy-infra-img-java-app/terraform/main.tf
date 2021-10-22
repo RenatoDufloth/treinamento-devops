@@ -95,11 +95,10 @@ resource "aws_security_group" "acessos" {
 
 
 
-
-output "output-jenkins_lab" {
+output "dev_img_deploy_jenkins" {
   value = [
-    "k8s_proxy - ${aws_instance.jenkins-lab.private_ip} - ssh -i ~/.ssh/id_rsa ubuntu@${aws_instance.jenkins-lab.public_dns}"
+    "public: ${aws_instance.jenkins-lab.public_ip}",
+    "public_dns: ${aws_instance.jenkins-lab.public_dns}",
+    "ssh -i ~/.ssh/id_rsa ubuntu@${aws_instance.jenkins-lab.public_dns}"
   ]
 }
-  
-# terraform refresh para mostrar o ssh
