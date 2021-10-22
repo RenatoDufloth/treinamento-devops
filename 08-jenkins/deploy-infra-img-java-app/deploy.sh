@@ -1,6 +1,6 @@
 cd ~/treinamento-devops/08-jenkins/deploy-infra-img-java-app/terraform
-/home/ubuntu/terraform init
-/home/ubuntu/terraform apply -auto-approve
+~/home/ubuntu/terraform init
+~/home/ubuntu/terraform apply -auto-approve
 
 echo "Aguardando criação de maquinas ..."
 sleep 10 # 10 segundos
