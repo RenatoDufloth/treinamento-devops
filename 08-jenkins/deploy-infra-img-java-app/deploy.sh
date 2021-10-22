@@ -5,7 +5,7 @@ cd /var/lib/jenkins/workspace/InfraPipeline/08-jenkins/deploy-infra-img-java-app
 echo "Aguardando criação de maquinas ..." 
 # sleep 10 # 10 segundos 
 
-echo "$[ec2-dev-img-jenkins]" > ../ansible/hosts # cria arquivo 
+echo "[ec2-dev-img-jenkins]" > ../ansible/hosts # cria arquivo 
 echo "$(/usr/local/bin/terraform output | grep public_dns | awk '{print $2;exit}')" | sed -e "s/\",//g" >> /var/lib/jenkins/workspace/InfraPipeline/08-jenkins/deploy-infra-img-java-app/ansible/hosts # captura output faz split de espaco e replace de ", 
 
 cat /var/lib/jenkins/workspace/InfraPipeline/08-jenkins/deploy-infra-img-java-app/ansible/hosts
