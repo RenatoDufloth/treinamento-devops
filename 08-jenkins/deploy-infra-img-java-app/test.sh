@@ -4,7 +4,7 @@ cd /var/lib/jenkins/workspace/InfraPipeline/08-jenkins/deploy-infra-img-java-app
 uri=$(/usr/local/bin/terraform output | grep public_dns | awk '{print $2;exit}' | sed -e "s/\",//g")
 
 echo $uri
-
+curl "http://$uri"
 body=$(curl "http://$uri")
 
 regex='Welcome to nginx!'
