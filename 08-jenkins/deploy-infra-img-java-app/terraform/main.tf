@@ -98,7 +98,7 @@ resource "aws_security_group" "acessos" {
 
 output "output-jenkins_lab" {
   value = [
-    "k8s_proxy - ${aws_instance.jenkins-lab.private_ip} - ssh -i ~/.ssh/id_rsa ubuntu@${aws_instance.k8s_proxy.public_dns}"
+    "k8s_proxy - ${aws_instance.jenkins-lab.private_ip} - ssh -i ~/.ssh/id_rsa ubuntu@${aws_instance.jenkins-lab.public_dns}"
   ]
 }
   
